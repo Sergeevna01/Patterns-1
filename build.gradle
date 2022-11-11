@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'io.freefair.lombok' version '5.3.0'
+    id 'io.qameta.allure' version '2.9.6'
 }
 
 group 'ru.netology'
@@ -11,6 +12,19 @@ sourceCompatibility = 1.8
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
+configurations {
+    testCompile
+}
+
+allure {
+    autoconfigure = true
+    version = '2.16.1'
+
+    useJUnit5 {
+        version = '2.16.1'
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -18,9 +32,8 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.6.1'
     testImplementation 'com.codeborne:selenide:5.19.0'
+    testImplementation 'io.qameta.allure:allure-selenide:2.16.1'
     testImplementation 'com.github.javafaker:javafaker:1.0.1'
-    testImplementation 'io.rest-assured:rest-assured:4.3.0'
-    testImplementation 'com.google.code.gson:gson:2.8.6'
 }
 
 test {
